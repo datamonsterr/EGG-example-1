@@ -126,9 +126,11 @@ addProjectInput.addEventListener("focusout", (e) => {
 addProjectInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         let li = createProjectItem(addProjectInput.value);
+        li.querySelector("input[type='radio']").checked = true;
         projects.appendChild(li);
         db[addProjectInput.value] = [];
         updateDatabase();
+        loadTodoList(addProjectInput.value);
         addProjectInput.value = "";
         addProjectInput.classList.add("hidden");
     }
